@@ -241,6 +241,6 @@
 		private String expireDate;
 		private String address;
 
-		// geter setter
+		// getter setter
 
 	}
