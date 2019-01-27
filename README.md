@@ -216,3 +216,31 @@
 		}
 	
 	}
+
+#
+
+
+	public class PersonData {
+
+		private String cid;
+		private String titlenameTH;
+		private String titlenameEN;
+		private String firstnameTH;
+		private String firstnameEN;
+		private String lastnameTH;
+		private String lastnameEN;
+		private String fullnameTH;
+		private String fullnameEN;
+		private String genderId;
+		private String genderCode;
+		private String genderNameTH;
+		private String genderNameEN;
+		private String dateOfBirth;
+		private String cardIssue;
+		private String IssueDate;
+		private String expireDate;
+		private String address;
+
+		// geter setter
+
+	}
