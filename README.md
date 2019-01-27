@@ -11,6 +11,46 @@
 	
 	
 #
+	/**
+	 * @author Pratya Yeekhaday
+	 *
+	 */
+	public class ThaiCardReader extends AbstractThaiCommandAPDU implements CardReader<PersonData> {
+
+		@Override
+		public CardResponse<PersonData> readCard(){
+			return AccessController.doPrivileged(new PrivilegedAction<CardResponse<PersonData>>()  {
+
+				@Override
+				public CardResponse<PersonData> run() {
+					CardResponse<PersonData> cardResponse = new CardResponse<>();
+					try {
+						
+						return cardResponse;
+
+					} catch (Exception exception) {
+						exception.printStackTrace();
+						cardResponse.setErrer(true);
+						cardResponse.setErrorName(exception.getMessage());
+						return cardResponse;
+					} 
+				}
+
+			});
+		}
+
+		public String getDataAsString(ResponseAPDU responseAPDU) {
+			return new String(responseAPDU.getData());
+		}
+
+		public String getDataAsString(ResponseAPDU responseAPDU, String carset) throws UnsupportedEncodingException {
+			return new String(responseAPDU.getData(), carset);
+		}
+
+	}
+
+
+#
 	
 	public abstract class AbstractThaiCommandAPDU {
 
