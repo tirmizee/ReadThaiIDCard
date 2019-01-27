@@ -1,4 +1,12 @@
 # ReadThaiIDCard
+	public interface CardReader<T> {
+
+		T readCard(T responseType);
+
+	}
+	
+	
+	
 	/**
 	 * @author Pratya Yeekhaday
 	 * 
