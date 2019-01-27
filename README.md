@@ -53,6 +53,7 @@
 
 #
 Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
+
 	public abstract class AbstractThaiCommandAPDU {
 
 		public static final byte[] APDU_THAI_IDCARD = {
