@@ -11,7 +11,7 @@
 	 * @author Pratya Yeekhaday
 	 * 
 	 */
-	public abstract class AbstractCommandAPDU {
+	public abstract class AbstractThaiCommandAPDU<T> implements CardReader<T> {
 
 		public static final byte[] APDU_THAI_IDCARD = {
 			(byte)0x00, (byte)0xA4, (byte)0X04, (byte)0x00, (byte)0x08, (byte)0xA0, (byte)0X00, 
