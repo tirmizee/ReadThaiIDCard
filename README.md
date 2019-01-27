@@ -1,17 +1,18 @@
 # ReadThaiIDCard
+	/**
+	 * @author Pratya Yeekhaday
+	 * 
+	 */
 	public interface CardReader<T> {
 
-		T readCard(T responseType);
+		CardResponse<T> readCard() throws Exception;
 
 	}
 	
 	
 #
-	/**
-	 * @author Pratya Yeekhaday
-	 * 
-	 */
-	public abstract class AbstractThaiCommandAPDU<T> implements CardReader<T> {
+	
+	public abstract class AbstractThaiCommandAPDU {
 
 		public static final byte[] APDU_THAI_IDCARD = {
 			(byte)0x00, (byte)0xA4, (byte)0X04, (byte)0x00, (byte)0x08, (byte)0xA0, (byte)0X00, 
