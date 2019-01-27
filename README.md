@@ -1,7 +1,8 @@
 # ReadThaiIDCard
 	/**
 	 * @author Pratya Yeekhaday
-	 * 
+	 *
+	 * @param <T> responseData
 	 */
 	public interface CardReader<T> {
 
