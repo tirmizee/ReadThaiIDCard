@@ -1,5 +1,8 @@
 # ReadThaiIDCard
-
+	/**
+	 * @author Pratya Yeekhaday
+	 * 
+	 */
 	public abstract class AbstractCommandAPDU {
 
 		public static final byte[] APDU_THAI_IDCARD = {
