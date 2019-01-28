@@ -29,15 +29,15 @@
 			CardChannel channel = card.getBasicChannel();
 			channel.transmit(getThaiCardCommand());
 
-			String cid = getDataAsString(channel.transmit(getCidCommand()));
-			String fullnameTH = getDataAsString(channel.transmit(getFullnameTHCommand()));
-			String fullnameEN = getDataAsString(channel.transmit(getFullnameENCommand()));
-			String gender = getDataAsString(channel.transmit(getGenderCommand()));
-			String address = getDataAsString(channel.transmit(getAddressCommand()));
-			String dateOfBirth = getDataAsString(channel.transmit(getDateOfBirthCommand()));
-			String cardIssue = getDataAsString(channel.transmit(getCardIssuerCommand()));
-			String issueDate = getDataAsString(channel.transmit(getIsseDateCommand()));
-			String expireDate = getDataAsString(channel.transmit(getExpireDateCommand()));
+			String cid = getDataAsString(channel.transmit(commandCid()));
+			String fullnameTH = getDataAsString(channel.transmit(commandFullnameTH()));
+			String fullnameEN = getDataAsString(channel.transmit(commandFullnameEN()));
+			String gender = getDataAsString(channel.transmit(commandGender()));
+			String address = getDataAsString(channel.transmit(commandAddress()));
+			String dateOfBirth = getDataAsString(channel.transmit(commandDateOfBirth()));
+			String cardIssue = getDataAsString(channel.transmit(commandCardIssuer()));
+			String issueDate = getDataAsString(channel.transmit(commandIsseDate()));
+			String expireDate = getDataAsString(channel.transmit(commandExpireDate()));
 
 			RawData  rawdata = new RawData();
 			rawdata.setCid(cid);
