@@ -2,11 +2,11 @@
 	/**
 	 * @author Pratya Yeekhaday
 	 *
-	 * @param <T> responseData
+	 * @param <T> responseDataType
 	 */
 	public interface CardReader<T> {
 
-		CardResponse<T> readCard() throws Exception;
+		T readCard() throws Exception;
 
 	}
 	
