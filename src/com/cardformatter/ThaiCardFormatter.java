@@ -16,7 +16,7 @@ public abstract class ThaiCardFormatter<T> {
 
 	public final DateTimeFormatter THAI_DATE_FORMAT= DateTimeFormatter.ofPattern("yyyyMMdd");
 	
-	public abstract T process(RawData rawdata);
+	protected abstract T process(RawData rawdata);
 	
 	protected int formatAge(String yyyyMMdd) {
         LocalDate dateOfBirth = LocalDate.parse(yyyyMMdd, THAI_DATE_FORMAT);
