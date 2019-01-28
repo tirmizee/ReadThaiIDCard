@@ -253,5 +253,29 @@ Data return from card
 
 #
 
+Demo run as Java Applet
+
+
+	public class Demo extends Applet {
+
+		private static final long serialVersionUID = 1355954047570316968L;
+
+		@Override
+		public void start() {
+			super.start();
+			ThaiCardReader cardReader = new ThaiCardReader();
+			try {
+				RawData rawdata = cardReader.readCard();
+				PersonInfo personInfo = new PersonInfoFormatter().process(rawdata);
+				System.out.println(rawdata.toString());
+				System.out.println(personInfo.toString());
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+
 ![demo](https://user-images.githubusercontent.com/15135199/51822112-db29af80-230d-11e9-9e75-013bb8947d13.png)
 
