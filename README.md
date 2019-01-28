@@ -6,14 +6,11 @@
 	 */
 	public interface CardReader<T> {
 
-<<<<<<< HEAD
 		T readCard() throws Exception;
-=======
+		
+	}
+#
 	public abstract class AbstractCommandAPDU {
->>>>>>> refs/remotes/origin/tirmizee-patch-1
-
-<<<<<<< HEAD
-=======
 		public static final byte[] APDU_THAI_IDCARD = {
 			(byte)0x00, (byte)0xA4, (byte)0X04, (byte)0x00, (byte)0x08, (byte)0xA0, (byte)0X00, 
 			(byte)0x00, (byte)0x00, (byte)0x54, (byte)0x48, (byte)0x00, (byte)0x01
@@ -175,9 +172,7 @@
 			return new CommandAPDU(APDU_THAI_IDCARD);
 		}
 	
->>>>>>> refs/remotes/origin/tirmizee-patch-1
 	}
-<<<<<<< HEAD
 	
 	
 #
