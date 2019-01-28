@@ -56,7 +56,7 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 
 	public abstract class AbstractThaiCommandAPDU {
 
-		public static final byte[] APDU_THAI_IDCARD = {
+		public static final byte[] APDU_BA = {
 			(byte)0x00, (byte)0xA4, (byte)0X04, (byte)0x00, (byte)0x08, (byte)0xA0, (byte)0X00, 
 			(byte)0x00, (byte)0x00, (byte)0x54, (byte)0x48, (byte)0x00, (byte)0x01
 		};
@@ -177,44 +177,44 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 			(byte)0x80, (byte)0xB0, (byte)0x14, (byte)0x68, (byte)0x02, (byte)0x00, (byte)0xFF
 		};
 
-		public static CommandAPDU getCidCommand() throws IOException {
+		public CommandAPDU getCidCommand() throws IOException {
 			return new CommandAPDU(APDU_CID);
 		}
 
-		public static CommandAPDU getFullnameTHCommand() {
+		public CommandAPDU getFullnameTHCommand() {
 			return new CommandAPDU(APDU_FULLNAME_TH);
 		}
 
-		public static CommandAPDU getFullnameENCommand() {
+		public CommandAPDU getFullnameENCommand() {
 			return new CommandAPDU(APDU_FULLNAME_EN);
 		}
 
-		public static CommandAPDU getDateOfBirthCommand() {
+		public CommandAPDU getDateOfBirthCommand() {
 			return new CommandAPDU(APDU_DATE_OF_BIRTH);
 		}
 
-		public static CommandAPDU getGenderCommand() {
+		public CommandAPDU getGenderCommand() {
 			return new CommandAPDU(APDU_GENDER);
 		}
 
-		public static CommandAPDU getCardIssuerCommand() {
+		public CommandAPDU getCardIssuerCommand() {
 			return new CommandAPDU(APDU_CARD_ISSUER);
 		}
 
-		public static CommandAPDU getIsseDateCommand() {
+		public CommandAPDU getIsseDateCommand() {
 			return new CommandAPDU(APDU_ISSUE_DATE);
 		}
 
-		public static CommandAPDU getExpireDateCommand() {
+		public CommandAPDU getExpireDateCommand() {
 			return new CommandAPDU(APDU_EXPIRE_DATE);
 		}
 
-		public static CommandAPDU getAddressCommand() {
+		public CommandAPDU getAddressCommand() {
 			return new CommandAPDU(APDU_ADDRESS);
 		}
 
-		public static CommandAPDU getThaiCardCommand() {
-			return new CommandAPDU(APDU_THAI_IDCARD);
+		public CommandAPDU getThaiCardCommand() {
+			return new CommandAPDU(APDU_BA);
 		}
 	
 	}
