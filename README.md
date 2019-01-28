@@ -19,25 +19,88 @@
 	public class ThaiCardReader extends AbstractThaiCommandAPDU implements CardReader<PersonData> {
 
 		@Override
-		public CardResponse<PersonData> readCard(){
-			return AccessController.doPrivileged(new PrivilegedAction<CardResponse<PersonData>>()  {
+		public PersonData readCard() throws Exception {
 
-				@Override
-				public CardResponse<PersonData> run() {
-					CardResponse<PersonData> cardResponse = new CardResponse<>();
-					try {
-						
-						return cardResponse;
+			TerminalFactory factory = TerminalFactory.getDefault();
+			List<CardTerminal> terminals = factory.terminals().list();
 
-					} catch (Exception exception) {
-						exception.printStackTrace();
-						cardResponse.setErrer(true);
-						cardResponse.setErrorName(exception.getMessage());
-						return cardResponse;
-					} 
-				}
+			CardTerminal terminal = terminals.get(0);
+			Card card = terminal.connect("*");
+			CardChannel channel = card.getBasicChannel();
+			channel.transmit(getThaiCardCommand());
 
-			});
+			String cid = getDataAsString(channel.transmit(getCidCommand()));
+			String fullnameTH = getDataAsString(channel.transmit(getFullnameTHCommand()));
+			String fullnameEN = getDataAsString(channel.transmit(getFullnameENCommand()));
+			String gender = getDataAsString(channel.transmit(getGenderCommand()));
+			String address = getDataAsString(channel.transmit(getAddressCommand()));
+			String dateOfBirth = getDataAsString(channel.transmit(getDateOfBirthCommand()));
+			String cardIssue = getDataAsString(channel.transmit(getCardIssuerCommand()));
+			String issueDate = getDataAsString(channel.transmit(getIsseDateCommand()));
+			String expireDate = getDataAsString(channel.transmit(getExpireDateCommand()));
+
+			PersonData personDetail = new PersonData();
+			personDetail.setCid(cid);
+			personDetail.setFullnameTH(toFormatFullname(fullnameTH));
+			personDetail.setFullnameEN(toFormatFullname(fullnameEN));
+			personDetail.setTitlenameTH(toFormatTitlename(fullnameTH));
+			personDetail.setTitlenameEN(toFormatTitlename(fullnameEN));
+			personDetail.setFirstnameTH(toFormatFirstname(fullnameTH));
+			personDetail.setFirstnameEN(toFormatFirstname(fullnameEN));
+			personDetail.setLastnameTH(toFormatLastname(fullnameTH));
+			personDetail.setLastnameEN(toFormatLastname(fullnameEN));
+			personDetail.setMidnameTH(toFormatMidname(fullnameTH));
+			personDetail.setMidnameEN(toFormatMidname(fullnameEN));
+			personDetail.setGenderId(gender);
+			personDetail.setGenderCode(toFormatGenderCode(gender));
+			personDetail.setGenderNameTH(toFormatGenderNameTH(gender));
+			personDetail.setGenderNameEN(toFormatGenderNameEN(gender));
+			personDetail.setAddress(toFormatAddress(address));
+			personDetail.setDateOfBirth(dateOfBirth);
+			personDetail.setCardIssue(cardIssue);
+			personDetail.setIssueDate(issueDate);
+			personDetail.setExpireDate(expireDate);
+
+			card.disconnect(false);
+
+			return personDetail;
+		}
+
+		private String toFormatAddress(String address) {
+			return address.replaceAll("[#]+", " ");
+		}
+
+		private String toFormatGenderNameTH(String genderId) {
+			return "1".equals(genderId) ? "ชาย" : "หญิง";
+		}
+
+		private String toFormatGenderNameEN(String genderId) {
+			return "1".equals(genderId) ? "Male" : "Famale";
+		}
+
+		private String toFormatGenderCode(String genderId) {
+			return "1".equals(genderId) ? "M" : "F";
+		}
+
+		private String toFormatTitlename(String fullname) {
+			return fullname.split("#")[0];
+		}
+
+		private String toFormatFirstname(String fullname) {
+			return fullname.split("#")[1];
+		}
+
+		private String toFormatMidname(String fullname) {
+			return fullname.split("#")[2];
+		}
+
+		private String toFormatLastname(String fullname) {
+			return fullname.split("#")[3];
+		}
+
+		private String toFormatFullname(String fullname) {
+			String[] names = fullname.split("#"); 
+			return names[0] + names[1] + " " + names[3];
 		}
 
 		public String getDataAsString(ResponseAPDU responseAPDU) {
@@ -49,7 +112,6 @@
 		}
 
 	}
-
 
 #
 Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
