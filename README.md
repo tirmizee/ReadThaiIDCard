@@ -235,27 +235,71 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 #
 
 
-	public class PersonData {
+	public class RawData {
 
 		private String cid;
-		private String titlenameTH;
-		private String titlenameEN;
-		private String firstnameTH;
-		private String firstnameEN;
-		private String lastnameTH;
-		private String lastnameEN;
 		private String fullnameTH;
 		private String fullnameEN;
-		private String genderId;
-		private String genderCode;
-		private String genderNameTH;
-		private String genderNameEN;
+		private String gender;
+		private String address;
 		private String dateOfBirth;
 		private String cardIssue;
-		private String IssueDate;
+		private String issueDate;
 		private String expireDate;
-		private String address;
-
-		// getter setter
+		public String getCid() {
+			return cid;
+		}
+		public void setCid(String cid) {
+			this.cid = cid;
+		}
+		public String getFullnameTH() {
+			return fullnameTH;
+		}
+		public void setFullnameTH(String fullnameTH) {
+			this.fullnameTH = fullnameTH;
+		}
+		public String getFullnameEN() {
+			return fullnameEN;
+		}
+		public void setFullnameEN(String fullnameEN) {
+			this.fullnameEN = fullnameEN;
+		}
+		public String getGender() {
+			return gender;
+		}
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+		public String getAddress() {
+			return address;
+		}
+		public void setAddress(String address) {
+			this.address = address;
+		}
+		public String getDateOfBirth() {
+			return dateOfBirth;
+		}
+		public void setDateOfBirth(String dateOfBirth) {
+			this.dateOfBirth = dateOfBirth;
+		}
+		public String getCardIssue() {
+			return cardIssue;
+		}
+		public void setCardIssue(String cardIssue) {
+			this.cardIssue = cardIssue;
+		}
+		public String getIssueDate() {
+			return issueDate;
+		}
+		public void setIssueDate(String issueDate) {
+			this.issueDate = issueDate;
+		}
+		public String getExpireDate() {
+			return expireDate;
+		}
+		public void setExpireDate(String expireDate) {
+			this.expireDate = expireDate;
+		}
+		// generate getter setter
 
 	}
