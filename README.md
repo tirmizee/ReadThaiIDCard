@@ -16,10 +16,10 @@
 	 * @author Pratya Yeekhaday
 	 *
 	 */
-	public class ThaiCardReader extends AbstractThaiCommandAPDU implements CardReader<PersonData> {
+	public class ThaiCardReader extends AbstractThaiCommandAPDU implements CardReader<RawData> {
 
 		@Override
-		public PersonData readCard() throws Exception {
+		public RawData readCard() throws Exception {
 
 			TerminalFactory factory = TerminalFactory.getDefault();
 			List<CardTerminal> terminals = factory.terminals().list();
@@ -39,68 +39,19 @@
 			String issueDate = getDataAsString(channel.transmit(getIsseDateCommand()));
 			String expireDate = getDataAsString(channel.transmit(getExpireDateCommand()));
 
-			PersonData personDetail = new PersonData();
-			personDetail.setCid(cid);
-			personDetail.setFullnameTH(toFormatFullname(fullnameTH));
-			personDetail.setFullnameEN(toFormatFullname(fullnameEN));
-			personDetail.setTitlenameTH(toFormatTitlename(fullnameTH));
-			personDetail.setTitlenameEN(toFormatTitlename(fullnameEN));
-			personDetail.setFirstnameTH(toFormatFirstname(fullnameTH));
-			personDetail.setFirstnameEN(toFormatFirstname(fullnameEN));
-			personDetail.setLastnameTH(toFormatLastname(fullnameTH));
-			personDetail.setLastnameEN(toFormatLastname(fullnameEN));
-			personDetail.setMidnameTH(toFormatMidname(fullnameTH));
-			personDetail.setMidnameEN(toFormatMidname(fullnameEN));
-			personDetail.setGenderId(gender);
-			personDetail.setGenderCode(toFormatGenderCode(gender));
-			personDetail.setGenderNameTH(toFormatGenderNameTH(gender));
-			personDetail.setGenderNameEN(toFormatGenderNameEN(gender));
-			personDetail.setAddress(toFormatAddress(address));
-			personDetail.setDateOfBirth(dateOfBirth);
-			personDetail.setCardIssue(cardIssue);
-			personDetail.setIssueDate(issueDate);
-			personDetail.setExpireDate(expireDate);
-
+			RawData  rawdata = new RawData();
+			rawdata.setCid(cid);
+			rawdata.setGender(gender);
+			rawdata.setAddress(address);
+			rawdata.setIssueDate(issueDate);
+			rawdata.setCardIssue(cardIssue);
+			rawdata.setFullnameTH(fullnameTH);
+			rawdata.setFullnameEN(fullnameEN);
+			rawdata.setExpireDate(expireDate);
+			rawdata.setDateOfBirth(dateOfBirth);
 			card.disconnect(false);
 
-			return personDetail;
-		}
-
-		private String toFormatAddress(String address) {
-			return address.replaceAll("[#]+", " ");
-		}
-
-		private String toFormatGenderNameTH(String genderId) {
-			return "1".equals(genderId) ? "ชาย" : "หญิง";
-		}
-
-		private String toFormatGenderNameEN(String genderId) {
-			return "1".equals(genderId) ? "Male" : "Famale";
-		}
-
-		private String toFormatGenderCode(String genderId) {
-			return "1".equals(genderId) ? "M" : "F";
-		}
-
-		private String toFormatTitlename(String fullname) {
-			return fullname.split("#")[0];
-		}
-
-		private String toFormatFirstname(String fullname) {
-			return fullname.split("#")[1];
-		}
-
-		private String toFormatMidname(String fullname) {
-			return fullname.split("#")[2];
-		}
-
-		private String toFormatLastname(String fullname) {
-			return fullname.split("#")[3];
-		}
-
-		private String toFormatFullname(String fullname) {
-			String[] names = fullname.split("#"); 
-			return names[0] + names[1] + " " + names[3];
+			return rawdata;
 		}
 
 		public String getDataAsString(ResponseAPDU responseAPDU) {
