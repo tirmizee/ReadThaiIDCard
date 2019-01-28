@@ -63,6 +63,26 @@
 		}
 
 	}
+	
+#
+Data return from card
+
+	public class RawData {
+
+		private String cid;
+		private String fullnameTH;
+		private String fullnameEN;
+		private String gender;
+		private String address;
+		private String dateOfBirth;
+		private String cardIssue;
+		private String issueDate;
+		private String expireDate;
+
+		// generate getter setter
+
+	}
+
 
 #
 Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
@@ -232,24 +252,6 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 	
 	}
 
-#
-Data return from card
-
-	public class RawData {
-
-		private String cid;
-		private String fullnameTH;
-		private String fullnameEN;
-		private String gender;
-		private String address;
-		private String dateOfBirth;
-		private String cardIssue;
-		private String issueDate;
-		private String expireDate;
-
-		// generate getter setter
-
-	}
 
 #
 
