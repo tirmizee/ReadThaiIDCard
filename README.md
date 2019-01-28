@@ -283,7 +283,3 @@ Demo run as Java Applet
 
 
 
-
-
-111111
-
