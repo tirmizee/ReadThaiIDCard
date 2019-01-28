@@ -233,7 +233,7 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 	}
 
 #
-
+Data return from card
 
 	public class RawData {
 
