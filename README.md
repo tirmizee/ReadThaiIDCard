@@ -27,7 +27,7 @@
 			CardTerminal terminal = terminals.get(0);
 			Card card = terminal.connect("*");
 			CardChannel channel = card.getBasicChannel();
-			channel.transmit(commandBa());
+			channel.transmit(commandSelect());
 
 			String cid = readDataAsString(channel.transmit(commandCid()));
 			String fullnameTH = readDataAsString(channel.transmit(commandFullnameTH()));
@@ -89,9 +89,13 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 
 	public abstract class AbstractThaiCommandAPDU {
 
-		public static final byte[] APDU_BA = {
-			(byte)0x00, (byte)0xA4, (byte)0X04, (byte)0x00, (byte)0x08, (byte)0xA0, (byte)0X00, 
-			(byte)0x00, (byte)0x00, (byte)0x54, (byte)0x48, (byte)0x00, (byte)0x01
+		public static final byte[] APDU_SELECT = {
+			(byte)0x00, // CLA
+			(byte)0xA4, // INS
+			(byte)0X04, // P1
+			(byte)0x00, // P2
+			(byte)0x08, // Lc
+			(byte)0xA0, (byte)0X00, (byte)0x00, (byte)0x00, (byte)0x54, (byte)0x48, (byte)0x00, (byte)0x01 // Data field
 		};
 
 		public static final byte[] APDU_CID = {
@@ -210,47 +214,48 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 			(byte)0x80, (byte)0xB0, (byte)0x14, (byte)0x68, (byte)0x02, (byte)0x00, (byte)0xFF
 		};
 
-		public CommandAPDU commandCid() throws IOException {
+		protected CommandAPDU commandCid() throws IOException {
 			return new CommandAPDU(APDU_CID);
 		}
 
-		public CommandAPDU commandFullnameTH() {
+		protected CommandAPDU commandFullnameTH() {
 			return new CommandAPDU(APDU_FULLNAME_TH);
 		}
 
-		public CommandAPDU commandFullnameEN() {
+		protected CommandAPDU commandFullnameEN() {
 			return new CommandAPDU(APDU_FULLNAME_EN);
 		}
 
-		public CommandAPDU commandDateOfBirth() {
+		protected CommandAPDU commandDateOfBirth() {
 			return new CommandAPDU(APDU_DATE_OF_BIRTH);
 		}
 
-		public CommandAPDU commandGender() {
+		protected CommandAPDU commandGender() {
 			return new CommandAPDU(APDU_GENDER);
 		}
 
-		public CommandAPDU commandCardIssuer() {
+		protected CommandAPDU commandCardIssuer() {
 			return new CommandAPDU(APDU_CARD_ISSUER);
 		}
 
-		public CommandAPDU commandIsseDate() {
+		protected CommandAPDU commandIsseDate() {
 			return new CommandAPDU(APDU_ISSUE_DATE);
 		}
 
-		public CommandAPDU commandExpireDate() {
+		protected CommandAPDU commandExpireDate() {
 			return new CommandAPDU(APDU_EXPIRE_DATE);
 		}
 
-		public CommandAPDU commandAddress() {
+		protected CommandAPDU commandAddress() {
 			return new CommandAPDU(APDU_ADDRESS);
 		}
 
-		public CommandAPDU commandBa() {
-			return new CommandAPDU(APDU_BA);
+		protected CommandAPDU commandSelect() {
+			return new CommandAPDU(APDU_SELECT);
 		}
-	
+
 	}
+
 
 
 #
