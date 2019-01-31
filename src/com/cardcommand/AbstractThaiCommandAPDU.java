@@ -11,9 +11,13 @@ import javax.smartcardio.CommandAPDU;
  */
 public abstract class AbstractThaiCommandAPDU {
 
-	public static final byte[] APDU_BA = {
-		(byte)0x00, (byte)0xA4, (byte)0X04, (byte)0x00, (byte)0x08, (byte)0xA0, (byte)0X00, 
-		(byte)0x00, (byte)0x00, (byte)0x54, (byte)0x48, (byte)0x00, (byte)0x01
+	public static final byte[] APDU_SELECT = {
+		(byte)0x00, // CLA
+		(byte)0xA4, // INS
+		(byte)0X04, // P1
+		(byte)0x00, // P2
+		(byte)0x08, // Lc
+		(byte)0xA0, (byte)0X00, (byte)0x00, (byte)0x00, (byte)0x54, (byte)0x48, (byte)0x00, (byte)0x01 // Data field
 	};
 	
 	public static final byte[] APDU_CID = {
@@ -168,8 +172,8 @@ public abstract class AbstractThaiCommandAPDU {
 		return new CommandAPDU(APDU_ADDRESS);
 	}
 	
-	protected CommandAPDU commandBa() {
-		return new CommandAPDU(APDU_BA);
+	protected CommandAPDU commandSelect() {
+		return new CommandAPDU(APDU_SELECT);
 	}
 	
 }

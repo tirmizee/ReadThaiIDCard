@@ -27,7 +27,7 @@ public class ThaiCardReader extends AbstractThaiCommandAPDU implements CardReade
 		CardTerminal terminal = terminals.get(0);
 		Card card = terminal.connect("*");
 		CardChannel channel = card.getBasicChannel();
-		channel.transmit(commandBa());
+		channel.transmit(commandSelect());
 		
 		String cid = readDataAsString(channel.transmit(commandCid()));
 		String fullnameTH = readDataAsString(channel.transmit(commandFullnameTH()));
