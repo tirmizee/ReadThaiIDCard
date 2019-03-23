@@ -176,4 +176,12 @@ public abstract class AbstractThaiCommandAPDU {
 		return new CommandAPDU(APDU_SELECT);
 	}
 	
+	protected CommandAPDU commandPhoto1() {
+		return new CommandAPDU(APDU_PHOTO_PART01);
+	}
+	
+	protected CommandAPDU commandPhoto2() {
+		return new CommandAPDU(APDU_PHOTO_PART02);
+	}
+	
 }

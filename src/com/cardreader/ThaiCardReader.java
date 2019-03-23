@@ -1,65 +1,67 @@
 package com.cardreader;
 
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
 import javax.smartcardio.Card;
 import javax.smartcardio.CardChannel;
-import javax.smartcardio.CardTerminal;
-import javax.smartcardio.ResponseAPDU;
-import javax.smartcardio.TerminalFactory;
 
-import com.cardcommand.AbstractThaiCommandAPDU;
-import com.carddata.RawData;
+import com.carddata.PersonInfo;
 
 /**
  * @author Pratya Yeekhaday
  *
  */
-public class ThaiCardReader extends AbstractThaiCommandAPDU implements CardReader<RawData> {
+public class ThaiCardReader extends AbstractThaiCardReader<PersonInfo>{
 
 	@Override
-	public RawData readCard() throws Exception {
+	public PersonInfo readCard() throws Exception {
 		
-		TerminalFactory factory = TerminalFactory.getDefault();
-		List<CardTerminal> terminals = factory.terminals().list();
-		
-		CardTerminal terminal = terminals.get(0);
-		Card card = terminal.connect("*");
+		Card card = connect("*");
 		CardChannel channel = card.getBasicChannel();
 		channel.transmit(commandSelect());
 		
-		String cid = readDataAsString(channel.transmit(commandCid()));
-		String fullnameTH = readDataAsString(channel.transmit(commandFullnameTH()));
-		String fullnameEN = readDataAsString(channel.transmit(commandFullnameEN()));
-		String gender = readDataAsString(channel.transmit(commandGender()));
-		String address = readDataAsString(channel.transmit(commandAddress()));
-		String dateOfBirth = readDataAsString(channel.transmit(commandDateOfBirth()));
-		String cardIssue = readDataAsString(channel.transmit(commandCardIssuer()));
-		String issueDate = readDataAsString(channel.transmit(commandIsseDate()));
-		String expireDate = readDataAsString(channel.transmit(commandExpireDate()));
+		// raw data from card
+		String rawCid = readDataAsString(channel.transmit(commandCid()));
+		String rawFullnameTH = readDataAsString(channel.transmit(commandFullnameTH()));
+		String rawFullnameEN = readDataAsString(channel.transmit(commandFullnameEN()));
+		String rawGender = readDataAsString(channel.transmit(commandGender()));
+		String rawAddress = readDataAsString(channel.transmit(commandAddress()));
+		String rawDateOfBirth = readDataAsString(channel.transmit(commandDateOfBirth()));
+		String rawCardIssue = readDataAsString(channel.transmit(commandCardIssuer()));
+		String rawIssueDate = readDataAsString(channel.transmit(commandIsseDate()));
+		String rawExpireDate = readDataAsString(channel.transmit(commandExpireDate()));
 		
-		RawData  rawdata = new RawData();
-		rawdata.setCid(cid);
-		rawdata.setGender(gender);
-		rawdata.setAddress(address);
-		rawdata.setIssueDate(issueDate);
-		rawdata.setCardIssue(cardIssue);
-		rawdata.setFullnameTH(fullnameTH);
-		rawdata.setFullnameEN(fullnameEN);
-		rawdata.setExpireDate(expireDate);
-		rawdata.setDateOfBirth(dateOfBirth);
+		// person info
+		PersonInfo personInfo = new PersonInfo();
+		personInfo.setCid(rawCid);
+		personInfo.setCardIssue(rawCardIssue);
+		personInfo.setIssueDate(rawIssueDate);
+		personInfo.setExpireDate(rawExpireDate);
+		personInfo.setDateOfBirth(rawDateOfBirth);
+		personInfo.setAge(formatAge(rawDateOfBirth));
+		personInfo.setGenderId(rawGender);
+		personInfo.setGenderCode(formatGenderCode(rawGender));
+		personInfo.setGenderNameTH(formatGenderNameTH(rawGender));
+		personInfo.setGenderNameEN(formatGenderNameEN(rawGender));
+		personInfo.setTitlenameTH(formatTitlename(rawFullnameTH));
+		personInfo.setTitlenameEN(formatTitlename(rawFullnameEN));
+		personInfo.setFirstnameTH(formatFirstname(rawFullnameTH));
+		personInfo.setFirstnameEN(formatFirstname(rawFullnameEN));
+		personInfo.setLastnameTH(formatLastname(rawFullnameTH));
+		personInfo.setLastnameEN(formatLastname(rawFullnameEN));
+		personInfo.setMidnameTH(formatMidname(rawFullnameTH));
+		personInfo.setMidnameEN(formatMidname(rawFullnameEN));
+		personInfo.setFullnameTH(formatFullname(rawFullnameTH));
+		personInfo.setFullnameEN(formatFullname(rawFullnameEN));
+		personInfo.setAddress(formatAddress(rawAddress));
+		personInfo.setHouseNo(formatHouseNo(rawAddress));
+		personInfo.setVillageNo(formatVillageNo(rawAddress));
+		personInfo.setAlley(formatAlley(rawAddress));
+		personInfo.setRoad(formatRoad(rawAddress));
+		personInfo.setSubDistrict(formatSubDistrict(rawAddress));
+		personInfo.setDistrict(formatDistrict(rawAddress));
+		personInfo.setProvince(formatProvince(rawAddress));
 		card.disconnect(false);
 		
-		return rawdata;
-	}
-	
-	public String readDataAsString(ResponseAPDU responseAPDU) {
-		return new String(responseAPDU.getData());
-	}
-	
-	public String readDataAsString(ResponseAPDU responseAPDU, String carset) throws UnsupportedEncodingException {
-		return new String(responseAPDU.getData(), carset);
+		return personInfo;
 	}
 
 }

@@ -1,22 +1,42 @@
-package com.cardformatter;
+package com.cardreader;
 
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
-import com.carddata.RawData;
+import javax.smartcardio.Card;
+import javax.smartcardio.CardException;
+import javax.smartcardio.CardTerminal;
+import javax.smartcardio.ResponseAPDU;
+import javax.smartcardio.TerminalFactory;
 
+import com.cardcommand.AbstractThaiCommandAPDU;
 
-/**
- * @author Pratya Yeekhaday
- *
- * @param <T> data info
- */
-public abstract class ThaiCardFormatter<T> {
+public abstract class AbstractThaiCardReader<T> extends AbstractThaiCommandAPDU implements CardReader<T>{
 
-	public final DateTimeFormatter THAI_DATE_FORMAT= DateTimeFormatter.ofPattern("yyyyMMdd");
+	public static final TerminalFactory factory = TerminalFactory.getDefault();
 	
-	protected abstract T process(RawData rawdata);
+	public static final DateTimeFormatter THAI_DATE_FORMAT= DateTimeFormatter.ofPattern("yyyyMMdd");
+	
+	public Card connect(String protocol) throws CardException {
+		List<CardTerminal> terminals = factory.terminals().list();
+		CardTerminal terminal = terminals.get(0);
+		return terminal.connect(protocol);
+	}
+	
+	public byte[] readBytes(ResponseAPDU responseAPDU) {
+		return responseAPDU.getBytes();
+	}
+	
+	public String readDataAsString(ResponseAPDU responseAPDU) {
+		return new String(responseAPDU.getData());
+	}
+	
+	public String readDataAsString(ResponseAPDU responseAPDU, String carset) throws UnsupportedEncodingException {
+		return new String(responseAPDU.getData(), carset);
+	}
 	
 	protected int formatAge(String yyyyMMdd) {
         LocalDate dateOfBirth = LocalDate.parse(yyyyMMdd, THAI_DATE_FORMAT);
