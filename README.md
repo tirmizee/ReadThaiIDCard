@@ -63,25 +63,7 @@
 		}
 
 	}
-	
-#
-Data return from card
 
-	public class RawData {
-
-		private String cid;
-		private String fullnameTH;
-		private String fullnameEN;
-		private String gender;
-		private String address;
-		private String dateOfBirth;
-		private String cardIssue;
-		private String issueDate;
-		private String expireDate;
-
-		// generate getter setter
-
-	}
 
 
 #
@@ -265,19 +247,18 @@ Demo run as Java Applet
 
 	public class Demo extends Applet {
 
-		private static final long serialVersionUID = 1355954047570316968L;
+		private static final long serialVersionUID = 1L;
 
 		@Override
 		public void start() {
-			super.start();
-			ThaiCardReader cardReader = new ThaiCardReader();
 			try {
-				RawData rawdata = cardReader.readCard();
-				PersonInfo personInfo = new PersonInfoFormatter().process(rawdata);
-				System.out.println(rawdata.toString());
-				System.out.println(personInfo.toString());
-
+				ThaiCardReader thaiCardReader = new ThaiCardReader();
+				PersonInfo personInfo = thaiCardReader.readCard();
+				if (personInfo != null) {
+					System.out.println(personInfo.toString());
+				}
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println(e.getMessage());
 			}
 		}
