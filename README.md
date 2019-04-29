@@ -1,6 +1,6 @@
 # ReadThaiIDCard
 
-https://docs.oracle.com/javase/7/docs/jre/api/security/smartcardio/spec/
+Smart Card I/O API : https://docs.oracle.com/javase/7/docs/jre/api/security/smartcardio/spec/
 
 	/**
 	 * @author Pratya Yeekhaday
