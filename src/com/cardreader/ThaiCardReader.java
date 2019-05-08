@@ -16,18 +16,18 @@ public class ThaiCardReader extends AbstractThaiCardReader<PersonInfo>{
 		
 		Card card = connect("*");
 		CardChannel channel = card.getBasicChannel();
-		channel.transmit(commandSelect());
+		channel.transmit(command(APDU_SELECT));
 		
 		// raw data from card
-		String rawCid = readDataAsString(channel.transmit(commandCid()));
-		String rawFullnameTH = readDataAsString(channel.transmit(commandFullnameTH()));
-		String rawFullnameEN = readDataAsString(channel.transmit(commandFullnameEN()));
-		String rawGender = readDataAsString(channel.transmit(commandGender()));
-		String rawAddress = readDataAsString(channel.transmit(commandAddress()));
-		String rawDateOfBirth = readDataAsString(channel.transmit(commandDateOfBirth()));
-		String rawCardIssue = readDataAsString(channel.transmit(commandCardIssuer()));
-		String rawIssueDate = readDataAsString(channel.transmit(commandIsseDate()));
-		String rawExpireDate = readDataAsString(channel.transmit(commandExpireDate()));
+		String rawCid = readDataAsString(channel.transmit(command(APDU_CID)));
+		String rawFullnameTH = readDataAsString(channel.transmit(command(APDU_FULLNAME_TH)));
+		String rawFullnameEN = readDataAsString(channel.transmit(command(APDU_FULLNAME_EN)));
+		String rawGender = readDataAsString(channel.transmit(command(APDU_GENDER)));
+		String rawAddress = readDataAsString(channel.transmit(command(APDU_ADDRESS)));
+		String rawDateOfBirth = readDataAsString(channel.transmit(command(APDU_DATE_OF_BIRTH)));
+		String rawCardIssue = readDataAsString(channel.transmit(command(APDU_CARD_ISSUER)));
+		String rawIssueDate = readDataAsString(channel.transmit(command(APDU_ISSUE_DATE)));
+		String rawExpireDate = readDataAsString(channel.transmit(command(APDU_EXPIRE_DATE)));
 		
 		// person info
 		PersonInfo personInfo = new PersonInfo();

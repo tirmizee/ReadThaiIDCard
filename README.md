@@ -144,46 +144,6 @@ Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.m
 			(byte)0x80, (byte)0xB0, (byte)0x14, (byte)0x68, (byte)0x02, (byte)0x00, (byte)0xFF
 		};
 
-		protected CommandAPDU commandCid() throws IOException {
-			return new CommandAPDU(APDU_CID);
-		}
-
-		protected CommandAPDU commandFullnameTH() {
-			return new CommandAPDU(APDU_FULLNAME_TH);
-		}
-
-		protected CommandAPDU commandFullnameEN() {
-			return new CommandAPDU(APDU_FULLNAME_EN);
-		}
-
-		protected CommandAPDU commandDateOfBirth() {
-			return new CommandAPDU(APDU_DATE_OF_BIRTH);
-		}
-
-		protected CommandAPDU commandGender() {
-			return new CommandAPDU(APDU_GENDER);
-		}
-
-		protected CommandAPDU commandCardIssuer() {
-			return new CommandAPDU(APDU_CARD_ISSUER);
-		}
-
-		protected CommandAPDU commandIsseDate() {
-			return new CommandAPDU(APDU_ISSUE_DATE);
-		}
-
-		protected CommandAPDU commandExpireDate() {
-			return new CommandAPDU(APDU_EXPIRE_DATE);
-		}
-
-		protected CommandAPDU commandAddress() {
-			return new CommandAPDU(APDU_ADDRESS);
-		}
-
-		protected CommandAPDU commandSelect() {
-			return new CommandAPDU(APDU_SELECT);
-		}
-
 	}
 
 
