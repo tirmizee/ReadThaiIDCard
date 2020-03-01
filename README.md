@@ -14,7 +14,7 @@
 	}
 	
 ### Java byte array
-| Valiable name | Type | Value |
+| Variable name | Type | Value |
 | ------------- | ------------- |-------------|
 | APDU_SELECT  | byte[] |{0, -92, 4, 0, 8, -96, 0, 0, 0, 84, 72, 0, 1}  |
 | APDU_CID  | byte[] |{-128, -80, 0, 4, 2, 0, 13}  |
