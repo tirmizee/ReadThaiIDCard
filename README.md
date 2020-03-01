@@ -1,6 +1,6 @@
 ### ReadThaiIDCard
 
-Smart Card I/O API : https://docs.oracle.com/javase/7/docs/jre/api/security/smartcardio/spec/
+#### Smart Card I/O API : https://docs.oracle.com/javase/7/docs/jre/api/security/smartcardio/spec/
 
 	/**
 	 * @author Pratya Yeekhaday
@@ -13,8 +13,13 @@ Smart Card I/O API : https://docs.oracle.com/javase/7/docs/jre/api/security/smar
 		
 	}
 	
+### Java byte array
+| Valiable name | Type | Value |
+| ------------- | ------------- |-------------|
+| APDU_SELECT  | byte[] |{0,-92,4,0,8,-96,0,0,0,84,72,0,1}  |
+	
 
-### Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
+#### Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
 
 	public abstract class AbstractThaiCommandAPDU {
 
