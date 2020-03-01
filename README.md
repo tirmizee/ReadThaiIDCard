@@ -19,6 +19,34 @@
 | APDU_SELECT  | byte[] |{0, -92, 4, 0, 8, -96, 0, 0, 0, 84, 72, 0, 1}  |
 | APDU_CID  | byte[] |{-128, -80, 0, 4, 2, 0, 13}  |
 | APDU_FULLNAME_TH  | byte[] |{-128, -80, 0, 17, 2, 0, 100}  |
+|APDU_FULLNAME_EN|byte[]|{-128, -80, 0, 117, 2, 0, 100}|
+|APDU_DATE_OF_BIRTH|byte[]|{-128, -80, 0, -39, 2, 0, 8}|
+|APDU_GENDER|byte[]|{-128, -80, 0, -31, 2, 0, 1}|
+|APDU_CARD_ISSUER|byte[]|{-128, -80, 0, -10, 2, 0, 100}|
+|APDU_ISSUE_DATE|byte[]|{-128, -80, 1, 103, 2, 0, 8}|
+|APDU_EXPIRE_DATE|byte[]|{-128, -80, 1, 111, 2, 0, 8}|
+|APDU_ADDRESS|byte[]|{-128, -80, 21, 121, 2, 0, 100}|
+|APDU_PHOTO_PART01|byte[]|{-128, -80, 1, 123, 2, 0, -1}|
+|APDU_PHOTO_PART02|byte[]|{-128, -80, 2, 122, 2, 0, -1}|
+|APDU_PHOTO_PART03|byte[]|{-128, -80, 3, 121, 2, 0, -1}|
+|APDU_PHOTO_PART04|byte[]|{-128, -80, 4, 120, 2, 0, -1}|
+|APDU_PHOTO_PART05|byte[]|{-128, -80, 5, 119, 2, 0, -1}|
+|APDU_PHOTO_PART06|byte[]|{-128, -80, 6, 118, 2, 0, -1}|
+|APDU_PHOTO_PART07|byte[]|{-128, -80, 7, 117, 2, 0, -1}|
+|APDU_PHOTO_PART08|byte[]|{-128, -80, 8, 116, 2, 0, -1}|
+|APDU_PHOTO_PART09|byte[]|{-128, -80, 9, 115, 2, 0, -1}|
+|APDU_PHOTO_PART10|byte[]|{-128, -80, 10, 114, 2, 0, -1}|
+|APDU_PHOTO_PART11|byte[]|{-128, -80, 11, 113, 2, 0, -1}|
+|APDU_PHOTO_PART12|byte[]|{-128, -80, 12, 112, 2, 0, -1}|
+|APDU_PHOTO_PART13|byte[]|{-128, -80, 13, 111, 2, 0, -1}|
+|APDU_PHOTO_PART14|byte[]|{-128, -80, 14, 110, 2, 0, -1}|
+|APDU_PHOTO_PART15|byte[]|{-128, -80, 15, 109, 2, 0, -1}|
+|APDU_PHOTO_PART16|byte[]|{-128, -80, 16, 108, 2, 0, -1}|
+|APDU_PHOTO_PART17|byte[]|{-128, -80, 17, 107, 2, 0, -1}|
+|APDU_PHOTO_PART18|byte[]|{-128, -80, 18, 106, 2, 0, -1}|
+|APDU_PHOTO_PART19|byte[]|{-128, -80, 19, 105, 2, 0, -1}|
+|APDU_PHOTO_PART20|byte[]|{-128, -80, 20, 104, 2, 0, -1}|
+
 	
 
 #### Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
