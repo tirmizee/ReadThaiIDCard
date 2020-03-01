@@ -16,7 +16,9 @@
 ### Java byte array
 | Valiable name | Type | Value |
 | ------------- | ------------- |-------------|
-| APDU_SELECT  | byte[] |{0,-92,4,0,8,-96,0,0,0,84,72,0,1}  |
+| APDU_SELECT  | byte[] |{0, -92, 4, 0, 8, -96, 0, 0, 0, 84, 72, 0, 1}  |
+| APDU_CID  | byte[] |{-128, -80, 0, 4, 2, 0, 13}  |
+| APDU_FULLNAME_TH  | byte[] |{-128, -80, 0, 17, 2, 0, 100}  |
 	
 
 #### Credit APDU : https://github.com/chakphanu/ThaiNationalIDCard/blob/master/APDU.md
