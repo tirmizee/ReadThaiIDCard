@@ -13,7 +13,7 @@
 		
 	}
 	
-### Java byte array
+### APDU Java byte array 
 | Variable name | Type | Value |
 | ------------- | ------------- |-------------|
 | APDU_SELECT  | byte[] |{0, -92, 4, 0, 8, -96, 0, 0, 0, 84, 72, 0, 1}  |
