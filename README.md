@@ -1,12 +1,6 @@
 ### ReadThaiIDCard
 
 #### Smart Card I/O API : https://docs.oracle.com/javase/7/docs/jre/api/security/smartcardio/spec/
-
-	public interface CardReader<T> {
-
-		T readCard() throws Exception;
-		
-	}
 	
 ### APDU Java byte array 
 | Variable name | Type | Value |
