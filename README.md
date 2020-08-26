@@ -2,9 +2,11 @@
 
 #### Smart Card I/O API : https://docs.oracle.com/javase/7/docs/jre/api/security/smartcardio/spec/
 	
-### APDU Application Protocol Data Unit 
+### APDU (Application Protocol Data Unit) 
 
 มาตรฐานการสื่อสารของ Smart card
+
+### APDU Commands 
 
 ### APDU Java byte array 
 | Variable name | Type | Value |
