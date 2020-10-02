@@ -4,7 +4,7 @@
 	
 ### APDU (Application Protocol Data Unit) 
 
-มาตรฐานการสื่อสารของ Smart card
+มาตรฐานการสื่อสารของ Smart card ถูกกำหนดใน ISO/IEC 7816–4
 
 ### APDU Commands 
 
